@@ -49,4 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! flycheck)
+;; (package! flycheck)
+(package! org-appear
+  :recipe (:host github
+           :repo "awth13/org-appear"))
