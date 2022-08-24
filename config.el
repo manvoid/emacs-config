@@ -81,7 +81,7 @@
 ;; Font
 ;; (setq! doom-font (font-spec :family "Fira Code" :size 14))
 (setq! doom-font (font-spec :family "iosevka" :size 13))
-(setq! doom-variable-pitch-font (font-spec :family "Alegreya" :size 12))
+(setq! doom-variable-pitch-font (font-spec :family "Alegreya" :size 20))
 
 ;; Web Mode
 
@@ -111,16 +111,17 @@
 
 ;; Org mode
 
-(add-hook! 'org-mode-hook #'mixed-pitch-mode)
-(add-hook! 'org-mode-hook #'solaire-mode)
-(setq mixed-pitch-variable-pitch-cursor nil)
+;; (add-hook! 'org-mode-hook #'mixed-pitch-mode)
+;; (add-hook! 'org-mode-hook #'solaire-mode)
+;; (setq mixed-pitch-variable-pitch-cursor nil)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(use-package! mixed-pitch
+  :hook
+  ;; If you want it in all text modes:
+  (text-mode . mixed-pitch-mode))
 
 (setq company-global-modes '(not org-mode))
 (after! org (setq org-hide-emphasis-markers t))
-
-(after! org
-  (setq org-special-ctrl-a/e t)
-  (setq org-special-ctrl-k t))
 
 (after! org
   (setq org-use-speed-commands
@@ -130,9 +131,9 @@
 
 (add-hook! org-mode (electric-indent-local-mode -1))
 
-(add-hook! org-mode :append
-           #'visual-line-mode
-           #'variable-pitch-mode)
+;; (add-hook! org-mode :append
+;;            #'visual-line-mode
+;;            #'variable-pitch-mode)
 
 (add-hook! org-mode :append #'org-appear-mode)
 
