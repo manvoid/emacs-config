@@ -79,7 +79,7 @@
 ;; My personal config
 
 ;; Font
-;; (setq! doom-font (font-spec :family "Fira Code" :size 14))
+;; (setq! doom-font (font-spec :family "Fira Code" :size 13))
 (setq! doom-font (font-spec :family "iosevka" :size 13))
 (setq! doom-variable-pitch-font (font-spec :family "Alegreya" :size 20))
 
@@ -130,12 +130,22 @@
                (looking-back "^\**")))))
 
 (add-hook! org-mode (electric-indent-local-mode -1))
-
-;; (add-hook! org-mode :append
-;;            #'visual-line-mode
-;;            #'variable-pitch-mode)
-
 (add-hook! org-mode :append #'org-appear-mode)
+
+(custom-theme-set-faces
+   'user
+   '(org-block ((t (:inherit fixed-pitch))))
+   '(org-code ((t (:inherit (shadow fixed-pitch)))))
+   '(org-document-info ((t (:foreground "dark orange"))))
+   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+   '(org-link ((t (:foreground "royal blue" :underline t))))
+   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-property-value ((t (:inherit fixed-pitch))) t)
+   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
 ;; TRAMP
 
