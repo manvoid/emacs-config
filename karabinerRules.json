@@ -1,0 +1,29 @@
+{
+  "title": "Manuel Custom",
+  "rules": [
+    {
+      "description": "JK to escape",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "j"
+              },
+              {
+                "key_code": "k"
+              }
+            ]
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
