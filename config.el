@@ -79,19 +79,37 @@
 ;; My personal config
 
 ;; Font
-;; (setq! doom-font (font-spec :family "Fira Code" :size 13))
-(setq! doom-font (font-spec :family "iosevka" :size 13))
-(setq! doom-variable-pitch-font (font-spec :family "Alegreya" :size 20))
+(setq! doom-font (font-spec :family "Iosevka" :size 14))
+(setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14))
+;; (setq! doom-font (font-spec :family "Iosevka" :size 14 :weight 'light))
+;; (setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14 :weight 'light))
+;; (setq! doom-font (font-spec :family "Iosevka" :size 14 :weight 'light))
+;; (setq! doom-variable-pitch-font (font-spec :family "Optima" :size 14))
+;; (setq! doom-font (font-spec :family "Monaco" :size 14))
+;; (setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14 :weight 'light))
+;; (setq! doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 14))
+;; (setq! doom-variable-pitch-font (font-spec :family "ETBembo" :size 13))
+;; (setq! doom-variable-pitch-font (font-spec :inherit doom-font :family "Alegreya" :height .8))
 
 ;; Web Mode
 
 (setq! web-mode-content-types-alist
        '(("jsx" . "\\.js[x]?\\'")))
 
+(defun reload-web-mode ()
+  (interactive)
+  (web-mode)
+  (web-mode))
+
+(defun reload-web-mode-config ()
+    (local-set-key (kbd "s-r") 'reload-web-mode)
+    )
+
 (use-package! web-mode
   :init
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
+  (add-hook! 'web-mode-hook 'reload-web-mode-config)
   :mode "\\.js$"
   )
 
@@ -108,20 +126,27 @@
 (global-set-key (kbd "s-;") 'evil-window-next)
 (global-set-key (kbd "s-'") '+workspace:switch-next)
 (evil-global-set-key 'normal "gs" 'evil-avy-goto-char-2)
+(evil-global-set-key 'visual "gs" 'evil-avy-goto-char-2)
+;; (evil-global-set-key 'visual "s-x" 'execute-extended-command)
 
 ;; Org mode
 
-;; (add-hook! 'org-mode-hook #'mixed-pitch-mode)
-;; (add-hook! 'org-mode-hook #'solaire-mode)
-;; (setq mixed-pitch-variable-pitch-cursor nil)
-(add-hook 'org-mode-hook 'variable-pitch-mode)
+(defun reload-org-mode ()
+  (interactive)
+  (org-mode)
+  (org-mode))
+
+(defun reload-org-mode-config ()
+    (local-set-key (kbd "s-r") 'reload-org-mode)
+    )
+
 (use-package! mixed-pitch
   :hook
-  ;; If you want it in all text modes:
   (text-mode . mixed-pitch-mode))
 
 (setq company-global-modes '(not org-mode))
 (after! org (setq org-hide-emphasis-markers t))
+(add-hook! 'org-mode-hook 'reload-org-mode-config)
 
 (after! org
   (setq org-use-speed-commands
@@ -131,21 +156,6 @@
 
 (add-hook! org-mode (electric-indent-local-mode -1))
 (add-hook! org-mode :append #'org-appear-mode)
-
-(custom-theme-set-faces
-   'user
-   '(org-block ((t (:inherit fixed-pitch))))
-   '(org-code ((t (:inherit (shadow fixed-pitch)))))
-   '(org-document-info ((t (:foreground "dark orange"))))
-   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-   '(org-link ((t (:foreground "royal blue" :underline t))))
-   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-   '(org-property-value ((t (:inherit fixed-pitch))) t)
-   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-   '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
 ;; TRAMP
 
