@@ -53,3 +53,4 @@
 (package! org-appear
   :recipe (:host github
            :repo "awth13/org-appear"))
+(package! git-gutter :disable t)
