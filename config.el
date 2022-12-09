@@ -80,14 +80,17 @@
 
 ;; Font
 (setq! doom-font (font-spec :family "Iosevka" :size 14))
-(setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14))
+;; (setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14))
+;; (setq! doom-variable-pitch-font (font-spec :family "Iosevka" :weight 'light :size 14))
+;; (setq! doom-variable-pitch-font (font-spec :family "Futura" :weight 'medium :size 14))
+;; (setq! doom-variable-pitch-font (font-spec :family "Arial Narrow" :size 14))
 ;; (setq! doom-font (font-spec :family "Iosevka" :size 14 :weight 'light))
 ;; (setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14 :weight 'light))
 ;; (setq! doom-font (font-spec :family "Iosevka" :size 14 :weight 'light))
 ;; (setq! doom-variable-pitch-font (font-spec :family "Optima" :size 14))
 ;; (setq! doom-font (font-spec :family "Monaco" :size 14))
 ;; (setq! doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 14 :weight 'light))
-;; (setq! doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 14))
+(setq! doom-variable-pitch-font (font-spec :family "Iosevka Aile" :weight 'light :size 14))
 ;; (setq! doom-variable-pitch-font (font-spec :family "ETBembo" :size 13))
 ;; (setq! doom-variable-pitch-font (font-spec :inherit doom-font :family "Alegreya" :height .8))
 
@@ -164,3 +167,8 @@
 ;;                      :major-modes '(web-mode)
 ;;                      :remote? t
 ;;                      :server-id 'eslint-remote))
+
+;; (use-package-hook! evil
+;;   :pre-init
+;;   (setq evil-respect-visual-line-mode t) ;; sane j and k behavior
+;;   t)
